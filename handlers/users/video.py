@@ -1,4 +1,5 @@
 from aiogram import Dispatcher
+from aiogram.utils.exceptions import FileIsTooBig
 from aiogram.types import Message
 from create_bot import bot
 from config import TOKEN, PATH, MEDIA
@@ -26,7 +27,7 @@ async def convert_audio(msg: Message):
             audio = file.read()
             await bot.send_audio(chat_id=chat_id, audio=audio, title=audio_name.split('.')[0])
 
-    except Exception as ex:
+    except FileIsTooBig as ex:
         print(ex)
         await msg.reply("You can't download more 20MB")
 
