@@ -15,7 +15,8 @@ async def on_startup(dp):
 
     video.register_handler_convert_audio(dp)
 
-    from handlers.admins import admin_panel
+    from handlers.admins import admin_panel, clear_folder
+    clear_folder.register_handler_clear_folder(dp)
 
     admin_panel.register_handler_admin_panel(dp)
 if __name__ == '__main__':
